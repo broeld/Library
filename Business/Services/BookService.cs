@@ -1,5 +1,7 @@
-﻿using Business.Interfaces;
+﻿using AutoMapper;
+using Business.Interfaces;
 using Business.Models;
+using Data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +11,15 @@ namespace Business.Services
 {
     public class BookService : IBookService
     {
+        private readonly IUnitOfWork _unit;
+        private readonly IMapper _mapper;
+
+        public BookService(IUnitOfWork unit, IMapper mapper)
+        {
+            _unit = unit;
+            _mapper = mapper;
+        }
+
         public Task AddAsync(BookModel model)
         {
             throw new NotImplementedException();
